@@ -110,21 +110,32 @@ public class Main implements Runnable, ActionListener{
 
   }
 
+  //method that can reset astericks counter
+  public void mainAstericksCount(){
+    astericksAmount = 0;
+   }
+
+
+
   // method called when a button is pressed
   public void actionPerformed(ActionEvent e){
     // get the command from the action
     String command = e.getActionCommand();
 
+    //gets rid of text when user types
     displayText = display.getText();
-    if(displayText == ("CLOSE")){
+    if(astericksAmount == 0){
       display.setText("");
     }
+    
 
     //checks if code entered is correct
     if(command.equals("enter") && astericksArray[0] == 1 && astericksArray[1] == 2 && astericksArray[2] == 3 && astericksArray[3] == 4){
       display.setText("OPEN");
+      mainAstericksCount();
     }else if(command.equals("enter")){
       display.setText("WRONG PIN");
+      mainAstericksCount();
     }
 
     //detects the number the user entered, saves it, and displays an astericks
